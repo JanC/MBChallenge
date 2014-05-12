@@ -1,0 +1,16 @@
+PODS:
+  - HexColors (2.2.1)
+  - KVOController (1.0.1)
+  - SVProgressHUD (HEAD based on 1.0)
+
+DEPENDENCIES:
+  - HexColors (~> 2.2)
+  - KVOController (~> 1.0)
+  - SVProgressHUD (HEAD)
+
+SPEC CHECKSUMS:
+  HexColors: 99211502e17904af7891fc8f687d0e4958a6d66e
+  KVOController: 2205f0d1a24f919e92a8f0b3254ac3ca40412f1a
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+
+COCOAPODS: 0.32.1
