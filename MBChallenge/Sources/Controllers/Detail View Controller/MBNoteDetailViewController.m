@@ -9,12 +9,14 @@
 #import "MBNote.h"
 #import "UIFont+MBStyle.h"
 
-@interface MBNoteDetailViewController ()
+@interface MBNoteDetailViewController () <UITextViewDelegate, UIActionSheetDelegate>
 
 @property(nonatomic, strong, readwrite) UITextView *textView;
 @property(nonatomic, strong, readwrite) UIBarButtonItem *editButton;
 @property(nonatomic, strong, readwrite) UIBarButtonItem *saveButton;
-@property(nonatomic, strong, readwrite) UIBarButtonItem *doneButton;
+
+@property (nonatomic, strong, readwrite) NSURL *clickedURL;
+
 @end
 
 @implementation MBNoteDetailViewController
@@ -48,6 +50,7 @@
     self.textView.font = [UIFont MBDefaultTextFont];
     self.textView.dataDetectorTypes = UIDataDetectorTypeAll;
     self.textView.editable = self.viewModel.inserting;
+    self.textView.delegate = self;
     [self.view addSubview:self.textView];
 
     //
@@ -67,6 +70,27 @@
     [super viewWillAppear:animated];
     self.textView.text = self.viewModel.model.text;
 }
+
+#pragma mark
+#pragma mark - Protocols
+
+- (BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange
+{
+    self.clickedURL = URL;
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"This will leave the application to open the URL?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil  otherButtonTitles: @"Continue", nil];
+    [actionSheet showInView:self.view];
+    return NO;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0) {
+        [[UIApplication sharedApplication] openURL:self.clickedURL];
+    }
+
+}
+
+
 
 #pragma mark
 #pragma mark - Actions
