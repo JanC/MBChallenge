@@ -43,8 +43,9 @@
     //
     self.textView.translatesAutoresizingMaskIntoConstraints = NO;
     NSDictionary *views = NSDictionaryOfVariableBindings(_textView);
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_textView]|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_textView]|" options:0 metrics:nil views:views]];
+    NSDictionary *metrics = @{@"spacing" : @10 };
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(spacing)-[_textView]-(spacing)-|" options:0 metrics:metrics views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_textView]|" options:0 metrics:metrics views:views]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
