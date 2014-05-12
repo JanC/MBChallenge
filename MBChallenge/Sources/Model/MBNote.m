@@ -8,11 +8,14 @@
 
 #import "MBNote.h"
 
-
 @implementation MBNote
 
 @dynamic uid;
 @dynamic text;
 @dynamic creationDate;
 
++ (NSString *)entityName
+{
+    return NSStringFromClass([self class]);
+}
 @end

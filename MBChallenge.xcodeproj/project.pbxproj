@@ -21,6 +21,7 @@
 		19A179D8C0CE213F4A212E83 /* MBNotesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17107CB974748241DC734 /* MBNotesClient.m */; };
 		19A17AA9A6EF4A085AD3F56A /* MBTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17A4ECB750EA744E1CB3C /* MBTableViewCell.m */; };
 		19A17C6D49BBBE01BC3C1109 /* MBNotesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A177272E95011CEC280C48 /* MBNotesManager.m */; };
+		19A17C78E7C6638E0757FA9A /* MBNote+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17BD19E8E925D5D25B6AD /* MBNote+JSON.m */; };
 		19A17DB9BB4C5D78CD7E7BBC /* MBNoteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17DF53FA932C999B3323C /* MBNoteDetailViewController.m */; };
 		19A17E253AF943480EE36191 /* MBNoteDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A17B523AC6A272E31C7182 /* MBNoteDetailViewModel.m */; };
 		19A17E6899E67EC171C4776D /* UIColor+MBStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 19A1795CA867C25FF2DB4565 /* UIColor+MBStyle.m */; };
@@ -72,10 +73,12 @@
 		19A1795CA867C25FF2DB4565 /* UIColor+MBStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MBStyle.m"; sourceTree = "<group>"; };
 		19A17989A56D26028C3F44F3 /* MBNotesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNotesManager.h; sourceTree = "<group>"; };
 		19A1799FC98F44CE9891E9F5 /* MBTableViewCell+MBNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBTableViewCell+MBNote.h"; sourceTree = "<group>"; };
+		19A179A2105B97150EADA086 /* MBNote+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBNote+JSON.h"; sourceTree = "<group>"; };
 		19A179A34F1D50BBC7F8AB61 /* MBTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBTableViewCell.h; sourceTree = "<group>"; };
 		19A179EFFBDD5083B2C50953 /* MBNoteListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNoteListViewModel.m; sourceTree = "<group>"; };
 		19A17A4ECB750EA744E1CB3C /* MBTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTableViewCell.m; sourceTree = "<group>"; };
 		19A17B523AC6A272E31C7182 /* MBNoteDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNoteDetailViewModel.m; sourceTree = "<group>"; };
+		19A17BD19E8E925D5D25B6AD /* MBNote+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBNote+JSON.m"; sourceTree = "<group>"; };
 		19A17BEEFC51707F07232528 /* MBNoteListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNoteListViewModel.h; sourceTree = "<group>"; };
 		19A17C70AF8BB6AD8EEA0FCD /* MBNoteDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNoteDetailViewModel.h; sourceTree = "<group>"; };
 		19A17CFCBDBE6BDE35AF0549 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -182,6 +185,8 @@
 				3DAB0061191D853000A5C2B8 /* MBNote.m */,
 				19A177272E95011CEC280C48 /* MBNotesManager.m */,
 				19A17989A56D26028C3F44F3 /* MBNotesManager.h */,
+				19A17BD19E8E925D5D25B6AD /* MBNote+JSON.m */,
+				19A179A2105B97150EADA086 /* MBNote+JSON.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				19A173363C6BB71AB0C947A0 /* UIFont+MBStyle.m in Sources */,
 				19A179D8C0CE213F4A212E83 /* MBNotesClient.m in Sources */,
 				19A17C6D49BBBE01BC3C1109 /* MBNotesManager.m in Sources */,
+				19A17C78E7C6638E0757FA9A /* MBNote+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

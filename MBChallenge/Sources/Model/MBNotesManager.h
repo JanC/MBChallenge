@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class MBNote;
 
 typedef void (^MBNotesManagerCompletion) ();
 
@@ -17,5 +18,8 @@ typedef void (^MBNotesManagerCompletion) ();
 + (instancetype)sharedManager;
 
 - (void)importNotesWithCompletion:(MBNotesManagerCompletion)completion;
+
+
+-(MBNote *) insertNewNote;
 
 @end

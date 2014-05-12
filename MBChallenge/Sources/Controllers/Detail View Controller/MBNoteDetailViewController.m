@@ -22,20 +22,20 @@
 {
     [super loadView];
 
-    if( [self.viewModel shouldShowCancelButton] )
+    if ( [self.viewModel shouldShowCancelButton] )
     {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTouchedUpInside:)];
     }
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTouchedUpInside:)];
-    
+
     //
     // Setup TextView
     //
     self.textView = [[UITextView alloc] init];
     self.textView.font = [UIFont MBDefaultTextFont];
     self.textView.dataDetectorTypes = UIDataDetectorTypeAll;
-    //self.textView.editable = NO;
+    // self.textView.editable = NO;
     [self.view addSubview:self.textView];
 
     //
@@ -52,8 +52,6 @@
     [super viewWillAppear:animated];
     self.textView.text = self.viewModel.model.text;
 }
-
-
 
 #pragma mark
 #pragma mark - Actions

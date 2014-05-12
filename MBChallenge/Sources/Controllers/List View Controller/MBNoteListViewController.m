@@ -14,7 +14,7 @@
 
 #pragma mark - Constants
 
-NSString * const MBNoteListViewControllerCellId = @"MBNoteListViewControllerCellId";
+NSString *const MBNoteListViewControllerCellId = @"MBNoteListViewControllerCellId";
 CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 
 @interface MBNoteListViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -29,15 +29,15 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 {
 }
 
-
 - (instancetype)init
 {
     self = [super init];
+
     if ( self )
     {
         self.title = NSLocalizedString(@"MB Notes", nil);
         self.viewModel = [[MBNoteListViewModel alloc] initWithModel:[NSManagedObjectContext currentContext] reloadCallbackBlock:^(BOOL loading, NSString *loadingMessage) {
-            if(loading)
+            if (loading)
             {
                 [SVProgressHUD showWithStatus:NSLocalizedString(@"Loading", @"Loading")];
             }
@@ -51,7 +51,6 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 
     return self;
 }
-
 
 - (void)loadView
 {
@@ -87,7 +86,6 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
     [self.viewModel reload];
 }
 
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -99,8 +97,6 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
     [super viewDidDisappear:animated];
     self.viewModel.active = NO;
 }
-
-
 
 #pragma
 #pragma mark - Protocols
@@ -116,6 +112,7 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MBNoteListViewControllerCellId forIndexPath:indexPath];
+
     [self configureNoteCell:cell forIndexPath:indexPath];
 
     return cell;
@@ -128,7 +125,8 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
         [self.viewModel deleteObjectAtIndexPath:indexPath];
     }
 }
@@ -182,7 +180,6 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
     return height;
 }
 
-
 #pragma mark
 #pragma mark - Actions
 
@@ -194,7 +191,7 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mbNoteDetailViewController];
 
-    [self.navigationController presentViewController:navigationController animated:YES  completion:^{
+    [self.navigationController presentViewController:navigationController animated:YES completion:^{
 
     }];
 }
@@ -211,7 +208,7 @@ CGFloat const MBNoteListViewControllerCellMaxHeight = 100.0;
 {
     NSAssert([cell isKindOfClass:[MBTableViewCell class]], @"%@ expects cells of type %@", NSStringFromSelector(@selector(configureNoteCell:forIndexPath:)), NSStringFromClass([MBTableViewCell class]));
 
-    MBTableViewCell *mbTableViewCell = (MBTableViewCell *) cell;
+    MBTableViewCell *mbTableViewCell = (MBTableViewCell *)cell;
     [mbTableViewCell configureForMBNote:[self.viewModel itemAtIndexPath:indexPath]];
 
 }

@@ -13,7 +13,6 @@
 
 @property(nonatomic, strong, readwrite) NSFetchedResultsController *fetchedResultsController;
 
-
 @end
 
 @implementation MBNoteListViewModel
@@ -30,8 +29,8 @@
         return _fetchedResultsController;
     }
 
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MBNote"];
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:[MBNote entityName]];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"uid" ascending:YES];
 
     fetchRequest.sortDescriptors = @[sortDescriptor];
 
@@ -47,6 +46,7 @@
 - (NSInteger)numberOfItems
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[0];
+
     return sectionInfo.numberOfObjects;
 }
 
@@ -58,22 +58,27 @@
 - (void)deleteObjectAtIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObjectContext *moc = [NSManagedObjectContext currentContext];
+
     [moc deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
     [moc saveContext];
 }
 
-- (MBNoteDetailViewModel *)detailViewModelForIndexPath:(NSIndexPath *) indexPath
+- (MBNoteDetailViewModel *)detailViewModelForIndexPath:(NSIndexPath *)indexPath
 {
     MBNote *mbNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
     MBNoteDetailViewModel *detailViewModel = [[MBNoteDetailViewModel alloc] initWithModel:mbNote];
+
     return detailViewModel;
 }
 
 - (MBNoteDetailViewModel *)detailViewModelForNewItem
 {
-    MBNote *mbNote = [NSEntityDescription insertNewObjectForEntityForName:@"MBNote" inManagedObjectContext:self.model];
+    MBNote *mbNote = [[MBNotesManager sharedManager] insertNewNote];
+
     MBNoteDetailViewModel *detailViewModel = [[MBNoteDetailViewModel alloc] initWithModel:mbNote];
+
     detailViewModel.inserting = YES;
+
     return detailViewModel;
 }
 
@@ -89,11 +94,10 @@
     [[MBNotesManager sharedManager] importNotesWithCompletion:^{
         self.loading = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.modelReloadBlock(self.isLoading, nil);
-        });
+                self.modelReloadBlock(self.isLoading, nil);
+            });
     }];
 }
-
 
 #pragma mark - Accessors
 
@@ -101,7 +105,7 @@
 {
     _active = active;
 
-    if(active)
+    if (active)
     {
         [self.fetchedResultsController performFetch:nil];
     }
@@ -119,6 +123,5 @@
         });
     }
 }
-
 
 @end

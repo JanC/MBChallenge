@@ -12,8 +12,21 @@
 
 @interface MBNote : NSManagedObject
 
+#pragma mark
+#pragma mark - Generates properties
+
 @property (nonatomic, retain) NSNumber * uid;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * creationDate;
+
+
+#pragma mark
+#pragma mark - Custom stuff
+
++(NSString *) entityName;
+
+
+
+
 
 @end

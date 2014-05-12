@@ -19,12 +19,12 @@
         [self.model.managedObjectContext deleteObject:self.model];
     }
 }
--(void)willDismiss
+- (void)willDismiss
 {
     [self.model.managedObjectContext save:nil];
 }
 
--(BOOL)shouldShowCancelButton
+- (BOOL)shouldShowCancelButton
 {
     return self.inserting;
 }
