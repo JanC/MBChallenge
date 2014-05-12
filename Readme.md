@@ -7,7 +7,7 @@ open MBChallenge.xcodeproj/
 
 
 ###MVMM
-This app uses the MVVM design pattern. I'm not so familiar with it but I find it cool so I used it here ;)
+This app uses the MVVM design pattern. I'm not so familiar with it but I find it cool so I used it here ;) The main goal of MVVM is to encapsulate business logic and move it away from the view controllers to make them lighter.
 
 ###AutoLayout
 
