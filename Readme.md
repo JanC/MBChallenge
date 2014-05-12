@@ -14,7 +14,7 @@ This app uses the MVVM design pattern. I'm not so familiar with it but I find it
 The app uses the auto layout feature to support landscape and portrait mode all screen sizes ;)
 
 
-##MBNotesClient
+###MBNotesClient
 Responsible for fetching the data from the API. Here it just returns the dummy array asynchronously to simulate a network call
 
 ###MBNotesManager
