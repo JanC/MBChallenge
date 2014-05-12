@@ -9,6 +9,6 @@
 
 @property (nonatomic, strong, readonly) UILabel *noteCreationDateLabel;
 @property (nonatomic, strong, readonly) UILabel *noteTitleLabel;
-@property (nonatomic, strong, readonly) UITextField *noteTextField;
+@property (nonatomic, strong, readonly) UITextView *noteTextView;
 
 @end

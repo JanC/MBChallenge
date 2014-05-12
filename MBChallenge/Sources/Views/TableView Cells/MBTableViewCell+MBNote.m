@@ -10,7 +10,6 @@
 
 - (void)configureForMBNote:(MBNote *)mbNote
 {
-    #warning dummy
     self.noteTitleLabel.text = mbNote.text;
 }
 @end

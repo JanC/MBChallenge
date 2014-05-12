@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign, readwrite) BOOL didUpdateConstraints;
 
+@property (nonatomic, strong, readwrite) UITextView *noteTextView;
 @end
 
 @implementation MBTableViewCell
@@ -22,6 +23,7 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+
     if ( self )
     {
 
@@ -31,14 +33,17 @@
         self.noteTitleLabel = [[UILabel alloc] init];
         self.noteTitleLabel.numberOfLines = 0;
 
+        self.noteTextView = [[UITextView alloc] init];
+        self.noteTextView.editable = NO;
+        self.noteTextView.dataDetectorTypes = UIDataDetectorTypeAll;
+
         //
         // Style
         //
         self.noteTitleLabel.font = [UIFont MBDefaultTextFont];
         self.noteTitleLabel.textColor = [UIColor MBDefaultTextColor];
 
-
-
+        self.noteTitleLabel.textColor = [UIColor MBDefaultTextColor];
 
         self.noteTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:self.noteTitleLabel];
@@ -51,7 +56,7 @@
 {
     [super updateConstraints];
 
-    if(self.didUpdateConstraints)
+    if (self.didUpdateConstraints)
     {
         return;
     }
@@ -61,7 +66,7 @@
     //
 
     NSDictionary *views = NSDictionaryOfVariableBindings(_noteTitleLabel);
-    NSDictionary *metrics = @{@"verticalSpacing" : @10 };
+    NSDictionary *metrics = @{ @"verticalSpacing" : @10 };
 
     [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_noteTitleLabel]-|"
                                                                              options:0
@@ -88,6 +93,12 @@
     // Set the preferredMaxLayoutWidth of the mutli-line bodyLabel based on the evaluated width of the label's frame,
     // as this will allow the text to wrap correctly, and as a result allow the label to take on the correct height.
     self.noteTitleLabel.preferredMaxLayoutWidth = CGRectGetWidth(self.noteTitleLabel.frame);
+
+    CGRect frame;
+    frame = self.noteTextView.frame;
+    frame.size.height = [self.noteTextView contentSize].height;
+    self.noteTextView.frame = frame;
+
 }
 
 @end

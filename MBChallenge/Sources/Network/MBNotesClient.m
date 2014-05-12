@@ -47,7 +47,9 @@
                            @{ @"id":@24, @"text": @"Visit www.mbraceapp.com" },
                            @{ @"id":@25, @"text": @"25th note" },
                            @{ @"id":@26, @"text": @"Note that is a little bit longer than all the other notes because of "
-                              "consiting of some strings that are useless and take a lot of space" }, @{ @"id":@27, @"text": @"27th note" }, @{ @"id":@28, @"text": @"28th note" }, @{ @"id":@29, @"text": @"29th note" },
+
+
+                                   "consiting of some strings that are useless and take a lot of space" }, @{ @"id":@27, @"text": @"27th note" }, @{ @"id":@28, @"text": @"28th note" }, @{ @"id":@29, @"text": @"29th note" },
                            @{ @"id":@30, @"text": @"another email to lukas@mbraceapp.com" }, @{ @"id":@31, @"text": @"31th note" },
                            @{ @"id":@32, @"text": @"32th note" },
                            @{ @"id":@33, @"text": @"33th note" },

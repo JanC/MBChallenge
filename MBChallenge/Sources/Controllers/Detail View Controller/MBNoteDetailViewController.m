@@ -11,7 +11,10 @@
 
 @interface MBNoteDetailViewController ()
 
-@property(nonatomic, strong) UITextView *textView;
+@property(nonatomic, strong, readwrite) UITextView *textView;
+@property(nonatomic, strong, readwrite) UIBarButtonItem *editButton;
+@property(nonatomic, strong, readwrite) UIBarButtonItem *saveButton;
+@property(nonatomic, strong, readwrite) UIBarButtonItem *doneButton;
 @end
 
 @implementation MBNoteDetailViewController
@@ -27,7 +30,16 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonTouchedUpInside:)];
     }
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTouchedUpInside:)];
+    self.saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveButtonTouchedUpInside:)];
+    self.editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editButtonTouchedUpInside:)];
+
+    if(self.viewModel.inserting)
+    {
+        self.navigationItem.rightBarButtonItem = self.saveButton;
+    } else {
+        self.navigationItem.rightBarButtonItem = self.editButton;
+    }
+
 
     //
     // Setup TextView
@@ -35,7 +47,7 @@
     self.textView = [[UITextView alloc] init];
     self.textView.font = [UIFont MBDefaultTextFont];
     self.textView.dataDetectorTypes = UIDataDetectorTypeAll;
-    // self.textView.editable = NO;
+    self.textView.editable = self.viewModel.inserting;
     [self.view addSubview:self.textView];
 
     //
@@ -47,6 +59,8 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(spacing)-[_textView]-(spacing)-|" options:0 metrics:metrics views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_textView]|" options:0 metrics:metrics views:views]];
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -69,8 +83,23 @@
     self.viewModel.model.text = self.textView.text;
     [self.viewModel willDismiss];
 
-    #warning fix this
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    if(self.viewModel.inserting)
+    {
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    }
+    else
+    {
+        self.textView.editable = NO;
+        self.navigationItem.rightBarButtonItem = self.editButton;
+    }
+
+}
+
+- (void)editButtonTouchedUpInside:(id)editButtonTouchedUpInside
+{
+    self.textView.editable = YES;
+    self.navigationItem.rightBarButtonItem = self.saveButton;
+    [self.textView becomeFirstResponder];
 }
 
 @end
