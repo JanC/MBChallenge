@@ -74,8 +74,8 @@
     [[UIView appearance] setTintColor:[UIColor MBPinkColor]];
 
     [SVProgressHUD setRingThickness:0.7];
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithWhite:1 alpha:0.7]];
-    [SVProgressHUD setForegroundColor:[UIColor MBPinkColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor MBPinkColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
 }
 
 - (void)saveContext
